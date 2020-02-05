@@ -1,4 +1,0 @@
-﻿trial_loop.thisRepN,trial_loop.thisTrialN,trial_loop.thisN,trial_loop.thisIndex,text_welcome.started,text_welcome.stopped,keyboard_welcome.keys,keyboard_welcome.rt,keyboard_welcome.started,keyboard_welcome.stopped,image_trial.started,image_trial.stopped,keyboard_trial.keys,keyboard_trial.rt,keyboard_trial.started,keyboard_trial.stopped,participant,session,date,expName,psychopyVersion,frameRate,
-,,,,21.333795187005308,None,space,1.4547192320460454,21.333795187005308,None,,,,,,,,001,2020_Feb_05_1927,image_slide,3.2.4,59.91202266077708,
-0,0,0,0,,,,,,,23.092309148982167,None,right,0.8568933660280891,23.092309148982167,None,,001,2020_Feb_05_1927,image_slide,3.2.4,59.91202266077708,
-1,0,1,0,,,,,,,24.664049227023497,None,right,39.46801970602246,24.664049227023497,None,,001,2020_Feb_05_1927,image_slide,3.2.4,59.91202266077708,

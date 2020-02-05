@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v3.2.4),
-    on Wed Feb  5 19:27:17 2020
+    on Wed Feb  5 19:41:47 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -89,7 +89,7 @@ text_welcome = visual.TextStim(win=win, name='text_welcome',
     depth=0.0);
 keyboard_welcome = keyboard.Keyboard()
 # enter the number of seconds that the experiment should continue
-experiment_duration = 3
+experiment_duration = 30
 
 # Initialize components for Routine "trial"
 trialClock = core.Clock()
@@ -120,13 +120,14 @@ current_pic = "imgs/" + str(img_no) + ".jpg"
 
 # Initialize components for Routine "end"
 endClock = core.Clock()
-text = visual.TextStim(win=win, name='text',
-    text='Thank you!\n\nPlease wait for the researcher.',
+text_end = visual.TextStim(win=win, name='text_end',
+    text="Thank you!\n\nPlease wait for the researcher.\n\n('q' to finish the experiment)",
     font='Arial',
     pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=0.0);
+keyboard_end = keyboard.Keyboard()
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -382,6 +383,10 @@ for thisTrial_loop in trial_loop:
         trial_loop.addData('keyboard_trial.rt', keyboard_trial.rt)
     trial_loop.addData('keyboard_trial.started', keyboard_trial.tStartRefresh)
     trial_loop.addData('keyboard_trial.stopped', keyboard_trial.tStopRefresh)
+    # save number of the image that was watched during this
+    # loop iteration/routine
+    trial_loop.addData('image_trial.image_number', img_no)
+    
     # if the participant pressed the left key, decrease the image
     # number by one (e. g. going from "image 2" to "image 1"),
     # and if they pressed the right key, increase the image number
@@ -400,6 +405,9 @@ for thisTrial_loop in trial_loop:
         img_no = min_img_no
     
     current_pic = "imgs/" + str(img_no) + ".jpg"
+    
+    
+    
     thisExp.nextEntry()
     
 # completed 10000 repeats of 'trial_loop'
@@ -408,8 +416,10 @@ for thisTrial_loop in trial_loop:
 # ------Prepare to start Routine "end"-------
 routineTimer.add(9999.000000)
 # update component parameters for each repeat
+keyboard_end.keys = []
+keyboard_end.rt = []
 # keep track of which components have finished
-endComponents = [text]
+endComponents = [text_end, keyboard_end]
 for thisComponent in endComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
@@ -433,22 +443,56 @@ while continueRoutine and routineTimer.getTime() > 0:
     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
     # update/draw components on each frame
     
-    # *text* updates
-    if text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+    # *text_end* updates
+    if text_end.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
         # keep track of start time/frame for later
-        text.frameNStart = frameN  # exact frame index
-        text.tStart = t  # local t and not account for scr refresh
-        text.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(text, 'tStartRefresh')  # time at next scr refresh
-        text.setAutoDraw(True)
-    if text.status == STARTED:
+        text_end.frameNStart = frameN  # exact frame index
+        text_end.tStart = t  # local t and not account for scr refresh
+        text_end.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(text_end, 'tStartRefresh')  # time at next scr refresh
+        text_end.setAutoDraw(True)
+    if text_end.status == STARTED:
         # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > text.tStartRefresh + 9999-frameTolerance:
+        if tThisFlipGlobal > text_end.tStartRefresh + 9999-frameTolerance:
             # keep track of stop time/frame for later
-            text.tStop = t  # not accounting for scr refresh
-            text.frameNStop = frameN  # exact frame index
-            win.timeOnFlip(text, 'tStopRefresh')  # time at next scr refresh
-            text.setAutoDraw(False)
+            text_end.tStop = t  # not accounting for scr refresh
+            text_end.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(text_end, 'tStopRefresh')  # time at next scr refresh
+            text_end.setAutoDraw(False)
+    
+    # *keyboard_end* updates
+    waitOnFlip = False
+    if keyboard_end.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        keyboard_end.frameNStart = frameN  # exact frame index
+        keyboard_end.tStart = t  # local t and not account for scr refresh
+        keyboard_end.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(keyboard_end, 'tStartRefresh')  # time at next scr refresh
+        keyboard_end.status = STARTED
+        # keyboard checking is just starting
+        waitOnFlip = True
+        win.callOnFlip(keyboard_end.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(keyboard_end.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if keyboard_end.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > keyboard_end.tStartRefresh + 9999-frameTolerance:
+            # keep track of stop time/frame for later
+            keyboard_end.tStop = t  # not accounting for scr refresh
+            keyboard_end.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(keyboard_end, 'tStopRefresh')  # time at next scr refresh
+            keyboard_end.status = FINISHED
+    if keyboard_end.status == STARTED and not waitOnFlip:
+        theseKeys = keyboard_end.getKeys(keyList=['q'], waitRelease=False)
+        if len(theseKeys):
+            theseKeys = theseKeys[0]  # at least one key was pressed
+            
+            # check for quit:
+            if "escape" == theseKeys:
+                endExpNow = True
+            keyboard_end.keys = theseKeys.name  # just the last key pressed
+            keyboard_end.rt = theseKeys.rt
+            # a response ends the routine
+            continueRoutine = False
     
     # check for quit (typically the Esc key)
     if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -471,8 +515,17 @@ while continueRoutine and routineTimer.getTime() > 0:
 for thisComponent in endComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
-thisExp.addData('text.started', text.tStartRefresh)
-thisExp.addData('text.stopped', text.tStopRefresh)
+thisExp.addData('text_end.started', text_end.tStartRefresh)
+thisExp.addData('text_end.stopped', text_end.tStopRefresh)
+# check responses
+if keyboard_end.keys in ['', [], None]:  # No response was made
+    keyboard_end.keys = None
+thisExp.addData('keyboard_end.keys',keyboard_end.keys)
+if keyboard_end.keys != None:  # we had a response
+    thisExp.addData('keyboard_end.rt', keyboard_end.rt)
+thisExp.addData('keyboard_end.started', keyboard_end.tStartRefresh)
+thisExp.addData('keyboard_end.stopped', keyboard_end.tStopRefresh)
+thisExp.nextEntry()
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting
