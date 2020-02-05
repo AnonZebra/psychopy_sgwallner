@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v3.2.4),
-    on Wed Feb  5 18:44:00 2020
+    on Wed Feb  5 19:08:05 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -89,8 +89,21 @@ image_trial = visual.ImageStim(
     flipHoriz=False, flipVert=False,
     texRes=128, interpolate=True, depth=0.0)
 keyboard_trial = keyboard.Keyboard()
-img_no = 1
-current_pic = str(img_no) + ".jpg"
+# initializing variables that will be used for flipping through
+# the images
+
+# enter the loweest/highest image 
+# numbers here
+min_img_no = 1
+max_img_no = 3
+
+img_no = min_img_no
+
+# the "imgs/" part is the folder that the images are saved in.
+# the ".jpg" part is the end of the file name. this script
+# assumes that all images are simply named "1.jpg", "2.jpg"
+# and so on
+current_pic = "imgs/" + str(img_no) + ".jpg"
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -121,6 +134,7 @@ for thisTrial_loop in trial_loop:
     image_trial.setImage(current_pic)
     keyboard_trial.keys = []
     keyboard_trial.rt = []
+    current_pic = "imgs/" + str(img_no) + ".jpg"
     # keep track of which components have finished
     trialComponents = [image_trial, keyboard_trial]
     for thisComponent in trialComponents:
@@ -194,11 +208,6 @@ for thisTrial_loop in trial_loop:
                     endExpNow = True
                 keyboard_trial.keys = theseKeys.name  # just the last key pressed
                 keyboard_trial.rt = theseKeys.rt
-                # was this 'correct'?
-                if (keyboard_trial.keys == str('left')) or (keyboard_trial.keys == 'left'):
-                    keyboard_trial.corr = 1
-                else:
-                    keyboard_trial.corr = 0
                 # a response ends the routine
                 continueRoutine = False
         
@@ -228,21 +237,29 @@ for thisTrial_loop in trial_loop:
     # check responses
     if keyboard_trial.keys in ['', [], None]:  # No response was made
         keyboard_trial.keys = None
-        # was no response the correct answer?!
-        if str('left').lower() == 'none':
-           keyboard_trial.corr = 1;  # correct non-response
-        else:
-           keyboard_trial.corr = 0;  # failed to respond (incorrectly)
-    # store data for trial_loop (TrialHandler)
     trial_loop.addData('keyboard_trial.keys',keyboard_trial.keys)
-    trial_loop.addData('keyboard_trial.corr', keyboard_trial.corr)
     if keyboard_trial.keys != None:  # we had a response
         trial_loop.addData('keyboard_trial.rt', keyboard_trial.rt)
     trial_loop.addData('keyboard_trial.started', keyboard_trial.tStartRefresh)
     trial_loop.addData('keyboard_trial.stopped', keyboard_trial.tStopRefresh)
-    if 
-    current_pic = str(img_no) + ".jpg"
+    # if the participant pressed the left key, decrease the image
+    # number by one (e. g. going from "image 2" to "image 1"),
+    # and if they pressed the right key, increase the image number
+    # by one ("image 2" -> "image 3")
+    if (keyboard_trial.keys == str('left')) or (keyboard_trial.keys == 'left'):
+        img_no -= 1
+    elif (keyboard_trial.keys == str('right')) or (keyboard_trial.keys == 'right'):
+        img_no += 1
     
+    # if the participant goes below the minimum/start value for the
+    # image number, go to the last image instead. if they go above
+    # the maximum image number value, go to the first image.
+    if img_no < min_img_no:
+        img_no = max_img_no
+    elif img_no > max_img_no:
+        img_no = min_img_no
+    
+    current_pic = "imgs/" + str(img_no) + ".jpg"
     thisExp.nextEntry()
     
 # completed 10000 repeats of 'trial_loop'
