@@ -1,0 +1,31 @@
+19.9078 	WARNING 	User requested fullscreen with size [1024  768], but screen is actually [1280, 800]. Using actual size
+20.6161 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, args=UNKNOWN, autoLog=True, bitsMode=UNKNOWN, blendMode='avg', color=array([0., 0., 0.]), colorSpace='rgb', fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x1306edf60>, gamma=None, gammaErrorPolicy='raise', kwargs=UNKNOWN, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x131268e48>, multiSample=False, name='window1', numSamples=2, pos=[320.0, 200.0], screen=0, size=array([2560, 1600]), stereo=False, units='height', useFBO=True, useRetina=True, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+20.6161 	EXP 	window1: recordFrameIntervals = False
+20.7824 	EXP 	window1: recordFrameIntervals = True
+20.9665 	EXP 	window1: recordFrameIntervals = False
+21.2562 	EXP 	Created text_welcome = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text_welcome', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text=str(...), units='height', win=Window(...), wrapWidth=1)
+21.2804 	EXP 	Created image_trial = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, image='sin', interpolate=True, mask=None, maskParams=None, name='image_trial', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([0.5, 0.5]), texRes=128, units='height', win=Window(...))
+21.3183 	EXP 	Created text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text=str(...), units='height', win=Window(...), wrapWidth=1)
+21.3338 	EXP 	text_welcome: autoDraw = True
+22.9046 	EXP 	Created sequence: random, trialTypes=1, nReps=10000, seed=None
+22.9633 	EXP 	New trial (rep=0, index=0): None
+23.0737 	DATA 	Keypress: space
+23.0923 	EXP 	text_welcome: autoDraw = False
+23.0923 	EXP 	image_trial: image = 'imgs/1.jpg'
+23.0923 	EXP 	image_trial: autoDraw = True
+24.2065 	EXP 	New trial (rep=1, index=0): None
+24.6283 	DATA 	Keypress: right
+24.6640 	EXP 	image_trial: autoDraw = False
+24.6640 	EXP 	image_trial: image = 'imgs/2.jpg'
+24.6640 	EXP 	image_trial: autoDraw = True
+64.3373 	DATA 	Keypress: right
+64.3589 	EXP 	image_trial: autoDraw = False
+64.3589 	EXP 	text: autoDraw = True
+65.2284 	DATA 	Keypress: left
+66.1133 	DATA 	Keypress: space
+69.3137 	DATA 	Keypress: right
+110.1664 	DATA 	Keypress: space
+110.9679 	DATA 	Keypress: space
+112.2517 	DATA 	Keypress: return
+114.6355 	DATA 	Keypress: escape
+115.0200 	EXP 	window1: mouseVisible = True

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v3.2.4),
-    on Wed Feb  5 19:23:58 2020
+    on Wed Feb  5 19:27:17 2020
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -89,7 +89,7 @@ text_welcome = visual.TextStim(win=win, name='text_welcome',
     depth=0.0);
 keyboard_welcome = keyboard.Keyboard()
 # enter the number of seconds that the experiment should continue
-experiment_duration = 10
+experiment_duration = 3
 
 # Initialize components for Routine "trial"
 trialClock = core.Clock()
@@ -406,7 +406,7 @@ for thisTrial_loop in trial_loop:
 
 
 # ------Prepare to start Routine "end"-------
-routineTimer.add(1.000000)
+routineTimer.add(9999.000000)
 # update component parameters for each repeat
 # keep track of which components have finished
 endComponents = [text]
@@ -443,7 +443,7 @@ while continueRoutine and routineTimer.getTime() > 0:
         text.setAutoDraw(True)
     if text.status == STARTED:
         # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > text.tStartRefresh + 1.0-frameTolerance:
+        if tThisFlipGlobal > text.tStartRefresh + 9999-frameTolerance:
             # keep track of stop time/frame for later
             text.tStop = t  # not accounting for scr refresh
             text.frameNStop = frameN  # exact frame index
